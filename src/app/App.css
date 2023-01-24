@@ -1,0 +1,92 @@
+.app {
+  height: 100%;
+  display: grid;
+  grid-template-areas: 'header'
+                        'main'
+                        'footer';
+  grid-template-rows: 15% 1fr 5%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-color: white;
+  scrollbar-width: thin;
+}
+
+.app.nav-open {
+  grid-template-rows: 23% 1fr 5%;
+}
+
+.app::-webkit-scrollbar {
+  width: 10px;
+}
+
+.app::webkit-scrollbar-track {
+  background-color: white;
+}
+
+.app::webkit-scrollbar-thumb {
+  background: rgba(255, 192, 203, 0.274);
+}
+
+.app-header {
+  grid-area: header;
+  display: grid;
+  width: 100%;
+  padding: 0 1rem;
+  grid-template-areas: 'title search nav-toggle';
+  grid-template-columns: 20% 1fr 20%;
+  background-color: rgba(255, 192, 203, 0.274);
+}
+
+.nav-open .app-header {
+  grid-template-areas: 'title search nav-toggle'
+                        'nav-primary nav-primary nav-primary';
+  grid-template-columns: 20% 1fr 20%;
+  grid-template-rows: 1fr 35%;
+}
+
+.header-item-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#app-title {
+  grid-area: title;
+  justify-content: start;
+}
+
+#app-title h1 {
+  font-size: 2.5rem;
+  margin: auto 0;
+  width: min-content;
+  text-align: center;
+}
+
+#app-title span {
+  color: rgb(173, 216, 230);
+}
+
+#app-searchbar {
+  grid-area: search;
+  display: flex;
+  justify-content: center;
+}
+
+#app-navbar-toggle {
+  grid-area: nav-toggle;
+}
+
+.app-main {
+  grid-area: main;
+  padding: 2rem;
+}
+
+#app-navbar-primary {
+  grid-area: nav-primary;
+  border-top: 3px solid white;
+}
+
+.app-footer {
+  background-color: rgba(255, 192, 203, 0.274);
+  text-align: center;
+}

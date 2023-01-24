@@ -1,0 +1,24 @@
+.recipe-tile {
+    border: 0.5rem double rgba(173, 216, 230, 0.39);
+    border-radius: 2rem;
+    height: 18rem;
+    width: 13rem;
+    display: flex;
+    justify-content: center;
+    align-items: space-between;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.recipe-tile .img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    width: 100%;
+}
+
+.recipe-tile .recipe-img {
+    height: 5rem;
+    width: 5rem;
+}

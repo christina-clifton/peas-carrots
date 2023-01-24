@@ -1,0 +1,12 @@
+#error-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#error-page h1,
+#error-page p {
+    width: fit-content;
+}

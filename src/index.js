@@ -1,13 +1,51 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+  createBrowserRouter,
+  RouterProvider
+} from 'react-router-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+import App, {
+  // loader as appLoader,
+  // action as appAction
+} from './app/App';
+
+import ErrorPage from './routes/errorPage/ErrorPage';
+import Recipes, {
+  // loader as recipesLoader
+} from './routes/recipes/Recipes';
+import RecipeDetails from './routes/recipeDetails/RecipeDetails';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        errorElement: <ErrorPage />,
+        children: [
+          { index: true, element: <Recipes /> },
+          {
+            path: "recipe/:id",
+            element: <RecipeDetails />,
+          },
+          {
+            path: "recipes",
+            element: <Recipes />,
+            // loader: recipesLoader,
+          },
+        ]
+      }
+    ]
+  }
+])
+
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
