@@ -1,24 +1,30 @@
 .recipe-tile {
-    border: 0.5rem double rgba(173, 216, 230, 0.39);
-    border-radius: 2rem;
     height: 18rem;
     width: 13rem;
-    display: flex;
-    justify-content: center;
-    align-items: space-between;
-    text-align: center;
     padding: 0.5rem;
+    background-color: white;
+    border-radius: 0.5rem;
+}
+
+.recipe-tile #recipe-tile-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+.recipe-tile h3 {
+    color: #84a59d;
 }
 
 .recipe-tile .img-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60%;
+    height: 70%;
     width: 100%;
 }
 
 .recipe-tile .recipe-img {
-    height: 5rem;
-    width: 5rem;
+    width: 100%;
 }

@@ -1,0 +1,46 @@
+.edit-instructions-list #add-instruction {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.edit-instructions-list input {
+    border:1px solid #77777771;
+    width: 40%;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.edit-instructions-list .add-instruction-button {
+    height: 1.5rem;
+    width: 1.5rem;
+    padding: 0;
+    border-radius: 1rem;
+    border: none;
+    background-color: #758eaeb7;
+    color: white;
+    cursor: pointer;
+}
+
+.edit-instructions-list #instruction {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.edit-instructions-list .delete-button-wrapper {
+    display: flex;
+    width: 1.5rem;
+    height: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.edit-instructions-list .delete-icon {
+    width: 1rem;
+    height: 1rem;
+    transition: opacity 0.1s ease-out;
+}

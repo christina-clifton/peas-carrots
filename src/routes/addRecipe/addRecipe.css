@@ -1,0 +1,114 @@
+.add-recipe {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+}
+
+.add-recipe button {
+    margin-left: 1rem;
+}
+
+.add-recipe input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border:1px solid #77777771;
+    font-family: inherit;
+
+}
+
+.add-recipe-container {
+    padding: 0.4rem;
+}
+
+.add-recipe #title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 4rem;
+}
+
+.add-recipe #title-container input {
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+}
+
+.add-recipe #title-container button {
+    color: white;
+    border-radius: 0.5rem;
+    border: transparent;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.add-recipe #title-container button.save {
+    background-color: #84a59d;
+}
+
+.add-recipe #title-container button.cancel {
+    background-color: #f28482;
+}
+
+.add-recipe #recipe-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 18rem;
+    width: 18rem;
+    margin: auto;
+}
+
+.add-recipe #recipe-img img {
+    position: absolute;
+    width: 100%;
+    margin: auto;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.add-recipe #img-upload-label {
+    position: relative;
+    width: min-content;
+    height: min-content;
+    margin: auto;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #758eae;
+    color: white;
+    z-index: 1;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.add-recipe input[type="file"] {
+    display: none;
+}
+
+.add-recipe #description-container input {
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    height: 3rem;
+}
+
+.add-recipe-header {
+    font-style: oblique;
+}
+
+.add-recipe textarea#notes {
+    width: 100%;
+    border: 1px solid #77777771;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    font-family: inherit;
+    font-size: 0.8rem;
+}

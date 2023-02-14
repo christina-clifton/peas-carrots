@@ -1,18 +1,21 @@
 .app {
   height: 100%;
   display: grid;
+  font-family: 'Raleway', sans-serif;
   grid-template-areas: 'header'
                         'main'
                         'footer';
-  grid-template-rows: 15% 1fr 5%;
+  grid-template-rows: 14% 1fr 5%;
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-color: white;
   scrollbar-width: thin;
+
 }
 
-.app.nav-open {
-  grid-template-rows: 23% 1fr 5%;
+.app.nav-open,
+.app.search-open {
+  grid-template-rows: 25% 1fr 5%;
 }
 
 .app::-webkit-scrollbar {
@@ -31,17 +34,23 @@
   grid-area: header;
   display: grid;
   width: 100%;
-  padding: 0 1rem;
-  grid-template-areas: 'title search nav-toggle';
-  grid-template-columns: 20% 1fr 20%;
-  background-color: rgba(255, 192, 203, 0.274);
+  grid-template-areas: 'nav-toggle title search-toggle';
+  grid-template-columns: 10% 1fr 10%;
+  border-bottom: 2px solid black;
 }
 
 .nav-open .app-header {
-  grid-template-areas: 'title search nav-toggle'
+  grid-template-areas: 'nav-toggle title search-toggle'
                         'nav-primary nav-primary nav-primary';
-  grid-template-columns: 20% 1fr 20%;
-  grid-template-rows: 1fr 35%;
+  grid-template-columns: 10% 1fr 10%;
+  grid-template-rows: 1fr 45%;
+}
+
+.search-open .app-header {
+  grid-template-areas: 'nav-toggle title search-toggle'
+                        'search-primary search-primary search-primary';
+  grid-template-columns: 10% 1fr 10%;
+  grid-template-rows: 1fr 45%;
 }
 
 .header-item-container {
@@ -50,9 +59,15 @@
   align-items: center;
 }
 
+#app-navbar-toggle {
+  grid-area: nav-toggle;
+}
+
 #app-title {
   grid-area: title;
-  justify-content: start;
+  font-family: 'Homemade Apple', cursive;
+  padding-top: 0.5rem;
+  line-height: 3.5rem;
 }
 
 #app-title h1 {
@@ -63,30 +78,34 @@
 }
 
 #app-title span {
-  color: rgb(173, 216, 230);
+  color: #758eae;
 }
 
-#app-searchbar {
-  grid-area: search;
-  display: flex;
-  justify-content: center;
-}
-
-#app-navbar-toggle {
-  grid-area: nav-toggle;
+#app-searchbar-toggle {
+  grid-area: search-toggle;
 }
 
 .app-main {
   grid-area: main;
   padding: 2rem;
+  background-color: #f7ede283;
 }
 
 #app-navbar-primary {
   grid-area: nav-primary;
-  border-top: 3px solid white;
+  background-color: #f5cac3a6;
+  border-top: 1px solid black;
+}
+
+#app-searchbar-primary {
+  grid-area: search-primary;
+  background-color: #f5cac3a6;
+  border-top: 1px solid black;
 }
 
 .app-footer {
-  background-color: rgba(255, 192, 203, 0.274);
+  background-color: #f5cac3a6;
+  border-top: 2px solid black;
   text-align: center;
+  font-weight: bold;
 }

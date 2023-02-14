@@ -1,13 +1,14 @@
-#time-container {
+.recipe-time {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-    height: 4rem;
+    height: 6rem;
+    padding: 0;
 }
 
-.recipe-time {
+.recipe-time .recipe-times {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -16,16 +17,17 @@
     align-items:  center;
 } 
 
-.recipe-time#prep-time, 
-.recipe-time#cook-time {
+.recipe-time #prep-time, 
+.recipe-time #cook-time {
     border-right: 0.25px solid black;
 }
 
-.recipe-time h4,
-.recipe-time span {
-    margin: 0;
+.recipe-time h4 {
+    margin: 1rem 0 1rem 0;
+    color: #758eae;
 }
 
 .recipe-time span {
     font-style: oblique;
+    margin: 0 0 1rem 0;
 }

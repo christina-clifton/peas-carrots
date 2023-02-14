@@ -4,19 +4,16 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
-  RouterProvider
+  RouterProvider,
 } from 'react-router-dom';
 
-import App, {
-  // loader as appLoader,
-  // action as appAction
-} from './app/App';
+import App from './app/App';
 
 import ErrorPage from './routes/errorPage/ErrorPage';
-import Recipes, {
-  // loader as recipesLoader
-} from './routes/recipes/Recipes';
+import Recipes from './routes/recipes/Recipes';
 import RecipeDetails from './routes/recipeDetails/RecipeDetails';
+import EditRecipe from './routes/editRecipe/EditRecipe';
+import AddRecipe from './routes/addRecipe/addRecipe';
 
 const router = createBrowserRouter([
   {
@@ -29,12 +26,21 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <Recipes /> },
           {
-            path: "recipe/:id",
+            path: "/recipe/:id",
             element: <RecipeDetails />,
           },
           {
-            path: "recipes",
+            path: "/recipe/:id/edit",
+            element: <EditRecipe />,
+          },
+          {
+            path: "/",
             element: <Recipes />,
+            // loader: recipesLoader,
+          },
+          {
+            path: "/addRecipe",
+            element: <AddRecipe />,
             // loader: recipesLoader,
           },
         ]

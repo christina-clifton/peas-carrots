@@ -1,27 +1,27 @@
 import './RecipeTile.css';
 import {Link} from 'react-router-dom';
 
-const RecipeTile = ({ img, name, description, id, time, ingredients, instructions }) => {
-
+const RecipeTile = ({ img, title, description, id, time, ingredients, instructions }) => {
     return (
         <div className='recipe-tile'>
             <Link
-                key={id}
                 to={`/recipe/${id}`}
                 className='link'
+                id='recipe-tile-content'
                 state={{
                     img,
-                    name,
+                    title,
                     description,
                     id,
                     time,
                     ingredients,
                     instructions
                 }}
-            >   <div className='img-container'>
-                    <img className="recipe-img" src={img} alt={name}/>
+            >   
+                <div className='img-container'>
+                    <img className="recipe-img" src={img} alt={title}/>
                 </div>
-                <h3>{name}</h3>
+                <h3>{title}</h3>
             </Link>
         </div>
     )

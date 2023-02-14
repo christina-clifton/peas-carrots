@@ -1,13 +1,12 @@
 import React from 'react';
-import './NavMenuButton.css'
+import './NavToggleButton.css'
 
-const NavMenuButton = (props) => {
+const NavToggleButton = (props) => {
     const {isToggled, toggle} = props;
-
     const className = isToggled ? 'open' : '';
 
     return (
-        <button id="nav-toggle-icon" className={className} onClick={toggle}>
+        <button id="navbar-toggle-icon" className={className} onClick={toggle}>
             <span></span>
             <span></span>
             <span></span>
@@ -15,4 +14,4 @@ const NavMenuButton = (props) => {
     );
 }
 
-export default NavMenuButton;
+export default NavToggleButton;

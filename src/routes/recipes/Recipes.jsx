@@ -1,19 +1,12 @@
 import React, {useState, useEffect} from 'react'; 
 import {getDatabase, ref, get, child} from 'firebase/database';
 import {database} from '../../util/constants';
+import {Link} from 'react-router-dom';
 
 import './Recipes.css';
 import RecipeTile from '../../components/recipeTile/RecipeTile';
 import {initializeApp} from 'firebase/app';
 import firebaseConfig from '../../util/firebase';
-
-// export async function loader({ request }) {
-//     const url = new URL(request.url);
-//     const q = url.searchParams.get("q");
-//     const recipes = await getRecipes();
-//     console.log(recipes);
-//     return { recipes };
-// }
 
 const Recipes = () => {
     initializeApp(firebaseConfig);
@@ -27,7 +20,7 @@ const Recipes = () => {
 
     const getRecipes = async () => {
         let recipesList = [];
-       
+        
         try {
             const databaseRef = ref(getDatabase());
             get(child(databaseRef, database.recipes)).then((snapshot) => {    
@@ -37,18 +30,16 @@ const Recipes = () => {
                         for (const key of Object.keys(data)) {
                             const it = data[key];
 
-                            console.log(it);
-
-                            let item = {
+                            let recipe = {
                                 id: it.id,
-                                name: it.name,
-                                image: it.image,
+                                title: it.title,
+                                img: it.img,
                                 description: it.description,
                                 time: it.time,
                                 ingredients: it.ingredients,
                                 instructions: it.instructions
                             }
-                            recipesList.push(item);
+                            recipesList.push(recipe);
                         }
                     }
                     setRecipes(recipesList);
@@ -66,13 +57,18 @@ const Recipes = () => {
 
     return (
         <div className='all-recipes'>
-            <h2>Recipes</h2>
+            <h2>RECIPES</h2>
+            <Link 
+                to='/addRecipe'
+            >
+                <button id='add-recipe'>+ New Recipe</button>
+            </Link>
             <ul>
                 {!isLoading && recipes.map(recipe => 
                     <li key={recipe.id}>
                         <RecipeTile 
-                            img={recipe.image}
-                            name={recipe.name}
+                            img={recipe.img}
+                            title={recipe.title}
                             description={recipe.description}
                             id={recipe.id}
                             time={recipe.time}
