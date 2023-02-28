@@ -1,20 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import reportWebVitals from './src/reportWebVitals';
+import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom';
 
-import App from './src/app/App';
+import App from './app/App';
 
-import ErrorPage from './src/routes/errorPage/ErrorPage';
-import Recipes from './src/routes/recipes/Recipes';
-import RecipeDetails from './src/routes/recipeDetails/RecipeDetails';
-import EditRecipe from './src/routes/editRecipe/EditRecipe';
-import AddRecipe from './src/routes/addRecipe/addRecipe';
-import SearchResults from './src/routes/searchResults/searchResults';
+import ErrorPage from './routes/errorPage/ErrorPage';
+import Recipes from './routes/recipes/Recipes';
+import RecipeDetails from './routes/recipeDetails/RecipeDetails';
+import EditRecipe from './routes/editRecipe/EditRecipe';
+import AddRecipe from './routes/addRecipe/addRecipe';
+import SearchResults from './routes/searchResults/searchResults';
 
 const router = createBrowserRouter([
   {
