@@ -14,6 +14,7 @@ import Recipes from './routes/recipes/Recipes';
 import RecipeDetails from './routes/recipeDetails/RecipeDetails';
 import EditRecipe from './routes/editRecipe/EditRecipe';
 import AddRecipe from './routes/addRecipe/addRecipe';
+import SearchResults from './routes/searchResults/searchResults';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,11 @@ const router = createBrowserRouter([
           {
             path: "/",
             element: <Recipes />,
+            // loader: recipesLoader,
+          },
+          {
+            path: "/searchResults",
+            element: <SearchResults />,
             // loader: recipesLoader,
           },
           {

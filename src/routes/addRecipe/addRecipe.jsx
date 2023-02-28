@@ -38,7 +38,7 @@ const AddNewRecipe = () => {
   }
 
   return (
-    <Form className='add-recipe' id='add-recipe-form'>
+    <div className='add-recipe' id='add-recipe-form'>
       <div className="add-recipe-container" id='title-container'>
         <input 
           placeholder='Recipe title'
@@ -122,7 +122,7 @@ const AddNewRecipe = () => {
           onChange={(e) => setNewRecipe({...newRecipe, notes: e.target.value})}
         />
       </div>
-    </Form>
+    </div>
   )
 }
 
