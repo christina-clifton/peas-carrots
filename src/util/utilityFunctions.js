@@ -35,3 +35,18 @@ export const getTotalMinutes = (hours, minutes) => {
     return (Number(hours) * 60) + Number(minutes);
 }
 
+export const useClickOutsideElement = (wrapperRef, callbackFunction, id) => {
+    const handleClickOutside = (e) => {
+        if(wrapperRef.current) {
+            if(!wrapperRef.current.contains(e.target) && (e.target.id !== id)) {
+                callbackFunction();
+            } 
+        }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);   
+    
+    return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+    };     
+};

@@ -1,59 +1,48 @@
 import React, {useState, useEffect} from 'react'; 
+import {Link} from 'react-router-dom';
 import {getDatabase, ref, get, child} from 'firebase/database';
 import {database} from '../../util/constants';
-import {Link} from 'react-router-dom';
 
 import './Recipes.css';
 import RecipeTile from '../../components/recipeTile/RecipeTile';
-import {initializeApp} from 'firebase/app';
-import firebaseConfig from '../../util/firebase';
 
 const Recipes = () => {
-    initializeApp(firebaseConfig);
-
     const [isLoading, setLoading] = useState(true);
-    const [recipes, setRecipes] = useState([]);
+    const [recipes, setRecipes] = useState();
 
     useEffect(() => {
         getRecipes();
     }, []);
 
-    const getRecipes = async () => {
+    const getRecipes = () => {
         let recipesList = [];
-        
-        try {
-            const databaseRef = ref(getDatabase());
-            get(child(databaseRef, database.recipes)).then((snapshot) => {    
-                if (snapshot.exists()) {
-                    const data = snapshot.val();
-                    if (data != null) {
-                        for (const key of Object.keys(data)) {
-                            const it = data[key];
-
-                            let recipe = {
-                                id: it.id,
-                                title: it.title,
-                                img: it.img,
-                                description: it.description,
-                                time: it.time,
-                                ingredients: it.ingredients,
-                                instructions: it.instructions
-                            }
-                            recipesList.push(recipe);
+    
+        const databaseRef = ref(getDatabase());
+        get(child(databaseRef, database.recipes)).then((snapshot) => {
+            if(snapshot.exists()) {
+                const data = snapshot.val();
+                if(data != null) {
+                    for(const key of Object.keys(data)) {
+                        const it = data[key];
+    
+                        let recipe = {
+                            id: it.id,
+                            title: it.title,
+                            img: it.img,
+                            description: it.description,
+                            time: it.time,
+                            ingredients: it.ingredients,
+                            instructions: it.instructions
                         }
+                        recipesList.push(recipe);
                     }
-                    setRecipes(recipesList);
                 }
-            }).catch((error) => {
-                console.error(error);
-            });
+            } 
             setLoading(false);
-        } catch (e) {
-            console.log(e);
-            setRecipes(recipesList);
-            setLoading(false);
-        }
-    }         
+            return setRecipes(recipesList);
+
+        })
+    }        
 
     return (
         <div className='all-recipes'>

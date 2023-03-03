@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# Peas + Carrots
+Recipe Keeper app I created to practice working with a database. I learned how to:
+* write, read, edit & delete data from Firebase Realtime Database.
+* use React Router to optimize page renders & user flow between webpages.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
+* [General info](##general-info)
+* [Technologies](##technologies)
+* [Setup](##setup)
+* [Screenshots](##screenshots)
+* [Status](##status)
+* [Contact](##contact)
 
-## Available Scripts
+## General info
+Users can create a digital cookbook of personal and family recipes. Recipes are added to Firebase with a title, image, description, estimated time, ingredients, instructions, and notes. Recipes can be edited, deleted and searched for.
 
-In the project directory, you can run:
+## Technologies
+Project is created with:
+* React (version 18.2.0)
+* React Router (version 6.6.1)
+* Firebase Realtime Database (version 9.17.1)
 
-### `npm start`
+## Setup
+To run this project, install it locally using npm:
+```
+$ cd ../peas + carrots
+$ npm install
+$ npm start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Screenshots
+*Main*
+![Image](/src/assets/main-screenshot.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+*Add New Recipe*
+![Image](/src/assets/add_recipe_screenshot.png)
 
-### `npm test`
+*Recipe Details*
+![Image](/src/assets/recipe_details_screenshot.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+*Edit Recipe*
+![Image](/src/assets/edit_recipe_screenshot.png)
 
-### `npm run build`
+*Search Results*
+![Image](/src/assets/search_results_screenshot.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Status
+Project is: in progress. 
+*Todo's*:
+* Add user profiles & sign-in
+* Add more searchable properties to recipes (vegetarian, vegan, gluten-free, dairy-free, nut-free)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact
+Created by [@christina-clifton](https://github.com/christina-clifton)

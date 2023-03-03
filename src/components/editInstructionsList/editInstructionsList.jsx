@@ -4,11 +4,13 @@ import './editInstructionsList.css';
 const EditInstructionsList = (props) => {
     const {instructions, setInstructions} = props;
     const [value, setValue] = useState('');
-
-    const handleAddNewInstruction = () => {
+    
+    const handleAddInstruction = (e) => {
         if(!value) return;
-        setInstructions([...instructions, value]);
-        setValue('');
+        if(e.keyCode === 13 || e.target.className === 'add-instruction-button') {
+            setInstructions([...instructions, value]);
+            setValue('');
+        }
     }
   
     const handleDeleteInstruction = (instruction) => {
@@ -25,8 +27,9 @@ const EditInstructionsList = (props) => {
                     type='text'
                     value={value} 
                     onChange={(e) => setValue(e.target.value)}
+                    onKeyDown={handleAddInstruction}
                 />
-                <button className='add-instruction-button' type="button" onClick={handleAddNewInstruction}>+</button>
+                <button className='add-instruction-button' type="button" onClick={handleAddInstruction}>+</button>
             </div>
             <ol id="instructions-list"> 
                 {instructions && instructions.map((instruction, i) => 

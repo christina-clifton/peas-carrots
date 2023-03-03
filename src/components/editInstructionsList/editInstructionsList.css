@@ -23,6 +23,7 @@
 }
 
 .edit-instructions-list #instruction {
+    margin-bottom: 1rem;
     display: flex;
     flex-direction: row;
     align-items: center;

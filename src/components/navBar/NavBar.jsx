@@ -1,34 +1,18 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef} from 'react';
 import { NavLink } from "react-router-dom";
 import './NavBar.css';
+import { useClickOutsideElement } from '../../util/utilityFunctions';
 
 const NavBar = (props) => {
     const wrapperRef = useRef(null);
+    const toggle = props.toggle;
 
-    const useClickOutsideElement = () => {
-        
-        useEffect(() => {
-            const handleClickOutside = (e) => {
-                if(wrapperRef.current) {
-                    if(!wrapperRef.current.contains(e.target) && (e.target.id !== 'navbar-toggle-icon')) {
-                        props.toggle();
-                    } 
-                }
-            }
-    
-            document.addEventListener("mousedown", handleClickOutside);   
-            
-            return () => {
-                document.removeEventListener("mousedown", handleClickOutside);
-            };     
-        }, []);
-    };
-
-    useClickOutsideElement();
+    useClickOutsideElement(wrapperRef, toggle, 'navbar-toggle-icon');
 
     return (
         <nav ref={wrapperRef} className='navbar'>
             <NavLink to='/' className='link'>ALL RECIPES</NavLink>
+            <NavLink to="/addRecipe" className='link'>NEW RECIPE</NavLink>
             {/* <NavLink to='weeklyPlanner' className='link'>WEEKLY PLANNER</NavLink>
             <NavLink to='shoppingList' className='link'>SHOPPING LIST</NavLink> */}
         </nav>

@@ -56,7 +56,8 @@
 }
 
 .recipe-details #recipe-img img {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .recipe-details #recipe-description {
@@ -71,7 +72,7 @@
 }
 
 .recipe-details li {
-    padding-bottom: 0.4rem;
+    padding-bottom: 1rem;
 }
 
 .recipe-details #notes p {
