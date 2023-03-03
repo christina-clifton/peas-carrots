@@ -1,28 +1,38 @@
-import { Link, useNavigate } from 'react-router-dom';
-import React, {useState, useRef} from 'react';
+import { Form } from 'react-router-dom';
+import React, {useState, useRef, useEffect} from 'react';
 import './SearchBar.css';
 import magnifyingGlass from '../../assets/magnifying_glass_icon.png';
-import { useClickOutsideElement } from '../../util/utilityFunctions';
+
 
 const SearchBar = (props) => {
-    const navigate = useNavigate();
     const [value, setValue] = useState('');
-
     const wrapperRef = useRef(null);
-    useClickOutsideElement(wrapperRef, props.toggle, 'close-icon');
 
-    const handleInput = (e) => {
-        const searchTerm = value;
+    const useClickOutsideElement = () => {
+        
+        useEffect(() => {
+            const handleClickOutside = (e) => {
+                if(wrapperRef.current) {
+                    console.log(e.target);
+                    if(!wrapperRef.current.contains(e.target) && (e.target.id !== 'close-icon')) {
+                        props.toggle();
+                    } 
+                }
+            }
+    
+            document.addEventListener("mousedown", handleClickOutside);   
+            
+            return () => {
+                document.removeEventListener("mousedown", handleClickOutside);
+            };     
+        }, []);
+    };
 
-        if(e.keyCode === 13) {
-            navigate("/searchResults", {state: searchTerm});
-            setValue('');
-        }
-    }
+    useClickOutsideElement();
 
     return (
         <div ref={wrapperRef} className='search'>
-            <div className='searchbar'>
+            <Form method="get" action="/recipes" className='searchbar'>
                 <input
                     aria-label="search recipes"
                     placeholder="search your recipes"
@@ -30,21 +40,15 @@ const SearchBar = (props) => {
                     value={value}
                     name="q"
                     onChange={(e) => setValue(e.target.value)}
-                    onKeyDown={handleInput}
                 />
-                <Link
-                    to='/searchResults'
-                    state={value}
-                >
-                    <button type="submit">
-                        <img 
-                            className="search-icon" 
-                            alt="submit" 
-                            src={magnifyingGlass}
-                        />
-                    </button>
-                </Link>
-            </div>
+                <button type="submit">
+                    <img 
+                        className="search-icon" 
+                        alt="submit" 
+                        src={magnifyingGlass}
+                    />
+                </button>
+            </Form>
       </div>
     )
 }

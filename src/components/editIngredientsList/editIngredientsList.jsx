@@ -5,12 +5,10 @@ const EditIngredientsList = (props) => {
     const {ingredients, setIngredients} = props;
     const [value, setValue] = useState('');
 
-    const handleAddIngredient = (e) => {
+    const handleAddNewIngredient = () => {
         if(!value) return;
-        if(e.keyCode === 13 || e.target.className === 'add-ingredient-button') {
-            setIngredients([...ingredients, value]);
-            setValue('');
-        }
+        setIngredients([...ingredients, value]);
+        setValue('');
     }
   
     const handleDeleteIngredient = (ingredient) => {
@@ -27,9 +25,8 @@ const EditIngredientsList = (props) => {
                     type='text'
                     value={value} 
                     onChange={(e) => setValue(e.target.value)}
-                    onKeyDown={handleAddIngredient}
                 />
-                <button className='add-ingredient-button' type="button" onClick={handleAddIngredient}>+</button>
+                <button className='add-ingredient-button' type="button" onClick={handleAddNewIngredient}>+</button>
             </div>
             <ul id="ingredients-list"> 
                 {ingredients && ingredients.map((ingredient, i) => 
