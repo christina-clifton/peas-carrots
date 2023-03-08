@@ -14,11 +14,7 @@ const SearchResults = () => {
     const [isLoading, setLoading] = useState(true);
     const [searchResults, setSearchResults] = useState();
 
-    useEffect(() => {
-        getSearchResults();  
-    }, []);
-
-    const getSearchResults = () => {
+     useEffect(() => {
         let searchResultsList = [];
     
         const databaseRef = ref(getDatabase());
@@ -45,15 +41,14 @@ const SearchResults = () => {
                             searchResultsList.push(recipe);
                         }
                     }
-
                 }
                 setSearchResults(searchResultsList);
                 setLoading(false);
             }
-        })
-        
-    }
+        })  
+    }, [searchTerm]);
 
+    
     return (
         <div className='search-results'>
             <h2>SEARCH RESULTS for "{searchTerm}"</h2>
