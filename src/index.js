@@ -37,17 +37,14 @@ const router = createBrowserRouter([
           {
             path: "/",
             element: <Recipes />,
-            // loader: recipesLoader,
           },
           {
             path: "/searchResults",
             element: <SearchResults />,
-            // loader: recipesLoader,
           },
           {
             path: "/addRecipe",
             element: <AddRecipe />,
-            // loader: recipesLoader,
           },
         ]
       }
@@ -57,7 +54,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider basename="/peas-carrots" router={router} />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
