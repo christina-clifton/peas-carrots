@@ -1,24 +1,27 @@
-import React, {useState, useEffect} from 'react'; 
-import {Link} from 'react-router-dom';
-import {getDatabase, ref, get, child} from 'firebase/database';
-import {database} from '../../util/constants';
+//stylesheet
+import './AllRecipes.css';
 
-import './Recipes.css';
+//dependencies
+import React, { useState, useEffect } from 'react'; 
+
+//database
+import { getDatabase, ref, get, child } from 'firebase/database';
+
+//constants
+import { database } from '../../util/Constants';
+
+//components
 import RecipeTile from '../../components/recipeTile/RecipeTile';
 
-const Recipes = () => {
+const AllRecipes = () => {
     const [isLoading, setLoading] = useState(true);
     const [recipes, setRecipes] = useState();
 
     useEffect(() => {
-        getRecipes();
-    }, []);
-
-    const getRecipes = () => {
         let recipesList = [];
     
         const databaseRef = ref(getDatabase());
-        get(child(databaseRef, database.recipes)).then((snapshot) => {
+        get(child(databaseRef, database.allRecipesKey)).then((snapshot) => {
             if(snapshot.exists()) {
                 const data = snapshot.val();
                 if(data != null) {
@@ -26,13 +29,17 @@ const Recipes = () => {
                         const it = data[key];
     
                         let recipe = {
-                            id: it.id,
+                            userRecipeId: it.userRecipeId,
+                            userId: it.userId,
+                            allRecipesId: it.allRecipesId,
+                            isPublic: it.isPublic,
                             title: it.title,
                             img: it.img,
                             description: it.description,
                             time: it.time,
                             ingredients: it.ingredients,
-                            instructions: it.instructions
+                            instructions: it.instructions,
+                            notes: it.notes
                         }
                         recipesList.push(recipe);
                     }
@@ -42,27 +49,26 @@ const Recipes = () => {
             return setRecipes(recipesList);
 
         })
-    }        
+    }, []);
 
     return (
         <div className='all-recipes'>
-            <h2>RECIPES</h2>
-            <Link 
-                to='/addRecipe'
-            >
-                <button id='add-recipe'>+ New Recipe</button>
-            </Link>
+            <h2>ALL RECIPES</h2>
             <ul>
                 {!isLoading && recipes.map(recipe => 
-                    <li key={recipe.id}>
-                        <RecipeTile 
-                            img={recipe.img}
+                    <li key={recipe.allRecipesId}>
+                        <RecipeTile
+                            userRecipeId={recipe.userRecipeId}
+                            userId={recipe.userId}
+                            allRecipesId={recipe.allRecipesId}
+                            isPublic={recipe.isPublic} 
                             title={recipe.title}
+                            img={recipe.img}
                             description={recipe.description}
-                            id={recipe.id}
                             time={recipe.time}
                             ingredients={recipe.ingredients}
                             instructions={recipe.instructions}
+                            notes={recipe.notes}
                         />
                     </li>
                 )}
@@ -71,4 +77,4 @@ const Recipes = () => {
     )
 }
 
-export default Recipes;
+export default AllRecipes;

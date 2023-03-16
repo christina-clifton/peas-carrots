@@ -2,9 +2,9 @@ import {
     Outlet,
 } from "react-router-dom";
 import './App.css';
-import React, {useState} from 'react';
-import {initializeApp} from 'firebase/app';
-import firebaseConfig from '../util/firebase';
+import React, { useState } from 'react';
+import { initializeApp } from 'firebase/app';
+import firebaseConfig from '../util/Firebase';
 
 import NavBar from '../components/navBar/NavBar';
 import SearchBar from '../components/searchBar/SearchBar';

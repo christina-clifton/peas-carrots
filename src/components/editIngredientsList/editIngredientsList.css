@@ -5,20 +5,21 @@
 }
 
 .edit-ingredients-list input {
-    border:1px solid #77777771;
     width: 40%;
-    border-radius: 0.5rem;
+    margin-right: 1rem;
     padding: 0.5rem;
+    border:1px solid #77777771;
+    border-radius: 0.5rem;
 }
 
 .edit-ingredients-list .add-ingredient-button {
     height: 1.5rem;
     width: 1.5rem;
     padding: 0;
-    border-radius: 1rem;
-    border: none;
     background-color: #758eaeb7;
     color: white;
+    border-radius: 1rem;
+    border: none;
     cursor: pointer;
 }
 
@@ -29,18 +30,18 @@
 }
 
 .edit-ingredients-list .delete-button-wrapper {
-    display: flex;
-    width: 1.5rem;
     height: 1.5rem;
+    width: 1.5rem;
+    padding-left: 2rem;
+    display: flex;
     justify-content: center;
     align-items: center;
-    border: none;
     background-color: transparent;
+    border: none;
     cursor: pointer;
 }
 
 .edit-ingredients-list .delete-icon {
-    width: 1rem;
     height: 1rem;
-    transition: opacity 0.1s ease-out;
+    width: 1rem;
 }

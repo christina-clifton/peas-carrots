@@ -1,25 +1,25 @@
 .edit-recipe-time {
+    height: 6rem;
+    padding: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-    height: 6rem;
-    padding: 0;
 }
 
 .edit-recipe-time input {
-    font-size: 0.9rem;
-    border:1px solid #77777771;
-    text-align: center;
     width: 3rem;
+    font-size: 0.9rem;
+    text-align: center;
+    border:1px solid #77777771;
 }
 
 .edit-recipe-time .recipe-times {
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
     justify-content: space-between;
     align-items:  center;
 }
@@ -34,22 +34,22 @@
 }
 
 .edit-recipe-time .hours-and-minutes {
+    margin: 0 0 1rem 0;
     display: flex;
     flex-direction: row;
-    margin: 0 0 1rem 0;
 }
 
 
 .edit-recipe-time .hours,
 .edit-recipe-time .minutes {
+    padding: 0 0.5rem;
     display: flex;
     flex-direction: row;
-    padding: 0 0.5rem;
 }
 
 .edit-recipe-time span {
-    padding-left: 0.3rem;
-    margin: auto;
     height: min-content;
+    margin: auto;
+    padding-left: 0.3rem;
     font-style: oblique;
 }

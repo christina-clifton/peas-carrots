@@ -1,7 +1,11 @@
-import React, {useState} from 'react';
+//stylesheet
 import './editRecipeTime.css';
-import { getHoursAndMinutes, getTimeString, getTotalMinutes } from '../../util/utilityFunctions';
 
+//dependencies
+import React, {useState} from 'react';
+
+//utility functions
+import { getHoursAndMinutes, getTimeString, getTotalMinutes } from '../../util/UtilityFunctions';
 
 const EditRecipeTime = (props) => {
   const {time, setTime} = props;
@@ -38,7 +42,6 @@ const EditRecipeTime = (props) => {
     }
 
     setTotalTime(getTimeString(totalPrepMinutes + totalCookMinutes));
-    console.log({prepTime: totalPrepMinutes, cookTime: totalCookMinutes});
     setTime(totalPrepMinutes, totalCookMinutes);
   }
 

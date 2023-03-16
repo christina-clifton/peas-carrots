@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import React, {useState, useRef} from 'react';
 import './SearchBar.css';
 import magnifyingGlass from '../../assets/magnifying_glass_icon.png';
-import { useClickOutsideElement } from '../../util/utilityFunctions';
+import { useClickOutsideElement } from '../../util/UtilityFunctions';
 
 const SearchBar = (props) => {
     const navigate = useNavigate();

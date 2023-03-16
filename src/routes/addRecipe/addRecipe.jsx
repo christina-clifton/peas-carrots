@@ -1,17 +1,35 @@
-import './addRecipe.css';
-import React, {useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+//stylesheet
+import './AddRecipe.css';
+
+//dependencies
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+//database
 import { getDatabase, ref, update, child, push } from 'firebase/database';
 
+//context
+import { useAuth } from '../../util/auth';
+
+//constants
+import { database } from '../../util/Constants';
+
+//components
 import EditRecipeTime from '../../components/editRecipeTime/editRecipeTime';
 import EditIngredientsList from '../../components/editIngredientsList/editIngredientsList';
 import EditInstructionsList from '../../components/editInstructionsList/editInstructionsList';
 import UploadRecipeImage from '../../components/uploadRecipeImage/uploadRecipeImage';
 
-const AddNewRecipe = () => {
+const AddRecipe = () => {
   const navigate = useNavigate();
+  const auth = useAuth();
+  const userId = auth.user;
 
-  const [newRecipe, setNewRecipe] = useState(
+  useEffect(() => {
+    if(!auth.user) navigate('/all-recipes', );
+  }, [auth.user, navigate])
+
+  const [recipe, setRecipe] = useState(
     {
       title: '',
       img: '',
@@ -20,21 +38,32 @@ const AddNewRecipe = () => {
       ingredients: '',
       instructions: '', 
       notes: '',
+      isPublic: false,
+      userId: userId
     }
   )
 
   const saveRecipe = () => {
-    if(!newRecipe.title) {
+    if(!recipe.title) {
       return alert('Recipe title is required');
-    } else {
-      const databaseRef = ref(getDatabase());
-      const newPostKey = push(child(databaseRef, 'recipes')).key;
-      const updates = {};
-      const recipeUrl = '/recipes/' + newPostKey;
-      newRecipe.id = newPostKey;
-      updates[recipeUrl] = newRecipe;
-      return update(databaseRef, updates);
-    }
+    } 
+    const databaseRef = ref(getDatabase());
+    const updates = {};
+
+    if(recipe.isPublic) {
+      const newPublicRecipeKey = push(child(databaseRef, '/all-recipes')).key;
+      const publicRecipePath = database.allRecipesKey + newPublicRecipeKey;
+      recipe.allRecipesId = newPublicRecipeKey;
+      updates[publicRecipePath] = recipe;
+    } 
+
+    const userRecipesPath = database.usersKey + userId + database.userRecipesKey;
+    const recipeKey = push(child(databaseRef, userRecipesPath)).key;
+    const recipePath = userRecipesPath + recipeKey;
+    recipe.userRecipeId = recipeKey;
+    updates[recipePath] = recipe;
+    update(databaseRef, updates);
+    return navigate(`/users/${recipe.userId}/recipes/${recipe.userRecipeId}`, {state: {recipe}})
   }
 
   return (
@@ -44,22 +73,17 @@ const AddNewRecipe = () => {
           placeholder='Recipe title'
           aria-label="Recipe title"
           type='text'
-          id='title'
-          value={newRecipe.title}
-          onChange={(e) => setNewRecipe({...newRecipe, title: e.target.value})}
+          id='title-input'
+          value={recipe.title}
+          onChange={(e) => setRecipe({...recipe, title: e.target.value})}
         />
-        <Link
-          to={`/recipe/${newRecipe.id}`}
-          state={newRecipe}
+        <button 
+          type="submit"
+          className='save'
+          onClick={saveRecipe}
         >
-          <button 
-            type="submit"
-            className='save'
-            onClick={saveRecipe}
-          >
-            Save
-          </button>
-        </Link>
+          Save
+        </button>
         <button 
           type="button"
           className='cancel'
@@ -73,9 +97,9 @@ const AddNewRecipe = () => {
 
       <div className="add-recipe-container" id='recipe-img'>
         <UploadRecipeImage 
-          img={newRecipe.img}
-          setImg={(url) => setNewRecipe({...newRecipe, img: url})}
-          title={newRecipe.title}
+          img={recipe.img}
+          setImg={(url) => setRecipe({...recipe, img: url})}
+          title={recipe.title}
         />
       </div>
 
@@ -84,32 +108,39 @@ const AddNewRecipe = () => {
           placeholder='Recipe description'
           aria-label='Recipe description'
           type='text'
-          id='description'
-          value={newRecipe.description}
-          onChange={(e) => setNewRecipe({...newRecipe, description: e.target.value})}
+          id='description-input'
+          value={recipe.description}
+          onChange={(e) => setRecipe({...recipe, description: e.target.value})}
         />
+        <div className='toggle-div'>
+          <span>{recipe.isPublic ? 'Public' : 'Private'}</span>
+          <div className={recipe.isPublic ? 'public' : 'private'} id='toggle-switch'>
+            <input type='checkbox' onClick={()=> setRecipe({...recipe, isPublic: !recipe.isPublic})}/>
+            <div className={recipe.isPublic ? 'public' : 'private'} id='slider'></div>
+          </div>
+        </div>
       </div>
       
       <div className="add-recipe-container" id='time-container'>
         <EditRecipeTime 
-          time={newRecipe.time}
-          setTime={(prepTime, cookTime) => setNewRecipe({...newRecipe, time: {prepTime: prepTime, cookTime: cookTime}})}
+          time={recipe.time}
+          setTime={(prepTime, cookTime) => setRecipe({...recipe, time: {prepTime: prepTime, cookTime: cookTime}})}
         />
       </div>
 
       <div className="add-recipe-container" id="ingredients-container">
         <h3 className="add-recipe-header" id="ingredients-header">Ingredients</h3>
         <EditIngredientsList
-          ingredients={newRecipe.ingredients}
-          setIngredients={(ingredients) => setNewRecipe({...newRecipe, ingredients: ingredients})}
+          ingredients={recipe.ingredients}
+          setIngredients={(ingredients) => setRecipe({...recipe, ingredients: ingredients})}
         />
       </div>
 
       <div className="add-recipe-container" id="instructions-container">
         <h3 className="add-recipe-header" id="instructions-header">Instructions</h3>
         <EditInstructionsList
-          instructions={newRecipe.instructions}
-          setInstructions={(instructions) => setNewRecipe({...newRecipe, instructions: instructions})}
+          instructions={recipe.instructions}
+          setInstructions={(instructions) => setRecipe({...recipe, instructions: instructions})}
         />
       </div>
 
@@ -117,13 +148,13 @@ const AddNewRecipe = () => {
         <h3 className='add-recipe-header' id='notes-header'>Notes</h3>
         <textarea
           id='notes'
-          value={newRecipe.notes}
+          value={recipe.notes}
           rows={3}
-          onChange={(e) => setNewRecipe({...newRecipe, notes: e.target.value})}
+          onChange={(e) => setRecipe({...recipe, notes: e.target.value})}
         />
       </div>
     </div>
   )
 }
 
-export default AddNewRecipe;
+export default AddRecipe;

@@ -1,3 +1,5 @@
 export const database = {
-    recipes: 'recipes'
+    allRecipesKey: '/all-recipes/',
+    usersKey: '/users/',
+    userRecipesKey: '/recipes/',
 }

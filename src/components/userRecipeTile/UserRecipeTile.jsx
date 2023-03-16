@@ -1,7 +1,10 @@
-import './RecipeTile.css';
+//stylesheet
+import './UserRecipeTile.css';
+
+//dependencies
 import {Link} from 'react-router-dom';
 
-const RecipeTile = (props) => {
+const UserRecipeTile = (props) => {
     const recipe = {
         userRecipeId: props.userRecipeId,
         userId: props.userId,
@@ -15,11 +18,11 @@ const RecipeTile = (props) => {
         instructions: props.instructions,
         notes: props.notes
     }
-
+    
     return (
         <div className='recipe-tile'>
             <Link
-                to={`/all-recipes/${recipe.allRecipesId}`}
+                to={`/users/${recipe.userId}/recipes/${recipe.userRecipeId}`}
                 className='link'
                 id='recipe-tile-content'
                 state={{recipe}}
@@ -33,4 +36,4 @@ const RecipeTile = (props) => {
     )
 }
 
-export default RecipeTile;
+export default UserRecipeTile;

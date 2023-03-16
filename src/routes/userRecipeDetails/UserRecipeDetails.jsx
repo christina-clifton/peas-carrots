@@ -1,20 +1,76 @@
 //stylesheet
-import './RecipeDetails.css';
+import './UserRecipeDetails.css';
 
 //dependencies
-import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import {useLocation, Link, useNavigate } from 'react-router-dom';
+
+//database
+import { getDatabase, ref, update } from 'firebase/database';
+
+//context
+import { useAuth } from '../../util/auth';
+
+//constants
+import { database } from '../../util/Constants';
 
 //components
 import RecipeTime from '../../components/recipeTime/RecipeTime';
 
-const RecipeDetails = () => {
+//assets
+import editIcon from '../../assets/edit_icon.png';
+
+const UserRecipeDetails = () => {
+  const auth = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(!auth.user) navigate('/all-recipes');
+  }, [auth.user, navigate])
+  
   const {state} = useLocation();
   const recipe = state.recipe;
+  
+  const handleDeleteRecipe = () => {
+    const databaseRef = ref(getDatabase());
+    const recipeKey = database.usersKey + recipe.userId + database.userRecipesKey + recipe.userRecipeId;
+    const updates = {};
+    updates[recipeKey] = null;
+    update(databaseRef, updates);
+    
+    if(recipe.isPublic) {
+      const publicRecipeKey = database.allRecipesKey + recipe.allRecipesId;
+      const updates = {};
+      updates[publicRecipeKey] = null;
+      update(databaseRef, updates);
+    }
+
+    return navigate(`/users/${recipe.userId}/recipes`);
+  }
 
   return (
       <div className='recipe-details'>
         <div className="recipe-details-container" id='recipe-title'>
           <h2>{recipe.title}</h2>
+          <div id='buttons'>
+            <Link
+              to='edit'
+              state={recipe}
+            >
+              <img className="edit-icon" alt="edit-recipe-icon" src={editIcon}></img>
+            </Link>
+            <button 
+              className='delete-button-wrapper' 
+              type='button' 
+              onClick={() => window.confirm('Delete this recipe?') ? handleDeleteRecipe() : null}
+            >
+              <img 
+                className='delete-icon'
+                src={require('../../assets/delete.png')}
+                alt='delete'
+              />
+            </button>
+          </div>
         </div>
 
         <div className='recipe-details-containter' id="recipe-img">
@@ -72,4 +128,4 @@ const RecipeDetails = () => {
   )
 }
 
-export default RecipeDetails;
+export default UserRecipeDetails;

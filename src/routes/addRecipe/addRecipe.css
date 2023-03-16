@@ -1,12 +1,8 @@
 .add-recipe {
-    display: flex;
     height: 100%;
     width: 100%;
+    display: flex;
     flex-direction: column;
-}
-
-.add-recipe button {
-    margin-left: 1rem;
 }
 
 .add-recipe input {
@@ -15,9 +11,8 @@
     border: none;
     padding: 0.5rem;
     border-radius: 0.5rem;
-    border:1px solid #77777771;
+    border: 1px solid #77777771;
     font-family: inherit;
-
 }
 
 .add-recipe-container {
@@ -25,68 +20,75 @@
 }
 
 .add-recipe #title-container {
+    height: 4rem;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    height: 4rem;
 }
 
-.add-recipe #title-container input {
+.add-recipe #title-input {
     padding: 1rem;
     font-size: 1.5rem;
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
 }
 
-.add-recipe #title-container button {
+
+.edit-recipe #title-container button {
+    margin-left: 1rem;
+}
+
+.add-recipe .save,
+.add-recipe .cancel {
+    margin-left: 1rem;
+    padding: 0.5rem;
     color: white;
     border-radius: 0.5rem;
-    border: transparent;
-    padding: 0.5rem;
+    border: transparent; 
     cursor: pointer;
 }
 
-.add-recipe #title-container button.save {
+.add-recipe .save {
     background-color: #84a59d;
 }
 
-.add-recipe #title-container button.cancel {
+.add-recipe .cancel {
     background-color: #f28482;
 }
 
 .add-recipe #recipe-img {
+    height: 18rem;
+    width: 18rem;
+    margin: auto;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    height: 18rem;
-    width: 18rem;
-    margin: auto;
 }
 
 .add-recipe #recipe-img img {
-    position: absolute;
-    max-width: 100%;
     max-height: 100%;
+    max-width: 100%;
     margin: auto;
+    position: absolute;
     opacity: 0.5;
     z-index: 0;
 }
 
 .add-recipe #img-upload-label {
-    position: relative;
-    width: min-content;
     height: min-content;
+    width: min-content;
     margin: auto;
     padding: 0.5rem;
-    border-radius: 0.5rem;
+    position: relative;
     background-color: #758eae;
     color: white;
-    z-index: 1;
     font-size: 0.9rem;
+    border-radius: 0.5rem;
+    z-index: 1;
     cursor: pointer;
 }
 
@@ -94,11 +96,74 @@
     display: none;
 }
 
-.add-recipe #description-container input {
+.add-recipe #description-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-recipe .toggle-div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.add-recipe .toggle-div span {
     font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.add-recipe #toggle-switch {
+    height: 1.5rem;
+    width: 3rem;
+    margin: 0 1rem;
+    position: relative;
     display: flex;
     align-items: center;
+    border-radius: 1rem;
+}
+
+.add-recipe #toggle-switch.private {
+    background-color: #77777771;
+}
+
+.add-recipe #toggle-switch.public {
+    background-color: #758eae;
+}
+
+.add-recipe #toggle-switch input {
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+}
+
+.add-recipe #toggle-switch #slider {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    z-index: 0;
+}
+
+.add-recipe #toggle-switch #slider.private {
+    left: 0;
+    border: 1px solid #77777771;
+}
+
+.add-recipe #toggle-switch #slider.public {
+    right: 0;
+    border: 1px solid #758eae;
+}
+
+.add-recipe #description-input {
     height: 3rem;
+    width: 85%;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
 }
 
 .add-recipe-header {
@@ -107,9 +172,9 @@
 
 .add-recipe textarea#notes {
     width: 100%;
-    border: 1px solid #77777771;
-    border-radius: 0.5rem;
     padding: 0.5rem;
     font-family: inherit;
     font-size: 0.8rem;
+    border: 1px solid #77777771;
+    border-radius: 0.5rem;
 }

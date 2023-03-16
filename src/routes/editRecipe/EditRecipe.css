@@ -1,23 +1,18 @@
 .edit-recipe {
-    display: flex;
     height: 100%;
     width: 100%;
+    display: flex;
     flex-direction: column;
 }
 
-.edit-recipe button {
-    margin-left: 1rem;
-}
-
 .edit-recipe input {
-    width: 100%;
     height: 100%;
-    border: none;
+    width: 100%;
     padding: 0.5rem;
+    border: none;
     border-radius: 0.5rem;
     border:1px solid #77777771;
     font-family: inherit;
-
 }
 
 .edit-recipe-container {
@@ -25,15 +20,15 @@
 }
 
 .edit-recipe #title-container {
+    height: 4rem;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    height: 4rem;
 }
 
-.edit-recipe #title-container input {
+.edit-recipe #title-input {
     padding: 1rem;
     font-size: 1.5rem;
     font-weight: bold;
@@ -41,46 +36,46 @@
 }
 
 .edit-recipe #title-container button {
+    padding: 0.5rem;
     color: white;
     border-radius: 0.5rem;
     border: transparent;
-    padding: 0.5rem;
     cursor: pointer;
 }
 
-.edit-recipe #title-container button.save {
+.edit-recipe .save {
     background-color: #84a59d;
 }
 
-.edit-recipe #title-container button.cancel {
+.edit-recipe .cancel {
     background-color: #f28482;
 }
 
 .edit-recipe #recipe-img {
+    height: 18rem;
+    width: 18rem;
+    margin: auto;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    height: 18rem;
-    width: 18rem;
-    margin: auto;
 }
 
 .edit-recipe #recipe-img img {
-    position: absolute;
     width: 100%;
     margin: auto;
+    position: absolute;
     opacity: 0.5;
     z-index: 0;
 }
 
 .edit-recipe #img-upload-label {
-    position: relative;
-    width: min-content;
     height: min-content;
+    width: min-content;
     margin: auto;
     padding: 0.5rem;
+    position: relative;
     border-radius: 0.5rem;
     background-color: #758eae;
     color: white;
@@ -93,11 +88,74 @@
     display: none;
 }
 
-.edit-recipe #description-container input {
+.edit-recipe #description-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-recipe .toggle-div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.edit-recipe .toggle-div span {
     font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.edit-recipe #toggle-switch {
+    height: 1.5rem;
+    width: 3rem;
+    margin: 0 1rem;
+    position: relative;
     display: flex;
     align-items: center;
+    border-radius: 1rem;
+}
+
+.edit-recipe #toggle-switch.private {
+    background-color: #77777771;
+}
+
+.edit-recipe #toggle-switch.public {
+    background-color: #758eae;
+}
+
+.edit-recipe #toggle-switch input {
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+}
+
+.edit-recipe #toggle-switch #slider {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    z-index: 0;
+}
+
+.edit-recipe #toggle-switch #slider.private {
+    left: 0;
+    border: 1px solid #77777771;
+}
+
+.edit-recipe #toggle-switch #slider.public {
+    right: 0;
+    border: 1px solid #758eae;
+}
+
+.edit-recipe #description-input {
     height: 3rem;
+    width: 85%;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
 }
 
 .edit-recipe-header {

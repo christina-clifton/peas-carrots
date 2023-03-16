@@ -1,36 +1,38 @@
-.all-recipes {
+.user-recipes {
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.all-recipes h2 {
-    text-align: center;
+.user-recipes h2 {
     margin: 2rem 0;
+    text-align: center;
     font-size: 1.7rem;
     font-weight: 700;
     font-family: 'Raleway', sans-serif;
     color: #f28482;
 }
 
-.all-recipes button#add-recipe {
+.user-recipes #add-recipe {
     margin: 1rem 0;
+    padding: 0.5rem;
     background-color: #84a59d;
     color: white;
     border-radius: 0.5rem;
     border: transparent;
-    padding: 0.5rem;
     cursor: pointer;
 }
 
-.all-recipes ul {
-    list-style: none;
+.user-recipes ul {
+    margin: 1rem;
+    padding: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin: 1rem;
-    padding: 0;
+    list-style: none;
 }
-.all-recipes li {
+.user-recipes li {
     margin:0 1rem 3rem 1rem;
 }

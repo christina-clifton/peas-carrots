@@ -1,5 +1,8 @@
-import React, {useState} from 'react';
+//stylesheet
 import './editIngredientsList.css';
+
+//dependencies
+import React, {useState} from 'react';
 
 const EditIngredientsList = (props) => {
     const {ingredients, setIngredients} = props;

@@ -1,17 +1,41 @@
+//stylesheet
 import './EditRecipe.css';
-import React, {useState} from 'react';
-import {Link, useLocation, useNavigate} from 'react-router-dom';
+
+//dependencies
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+//database
+import { getDatabase, ref, update, child, push } from 'firebase/database';
+
+//context
+import { useAuth } from '../../util/auth';
+
+//constants
+import { database } from '../../util/Constants';
+
+//components
 import EditRecipeTime from '../../components/editRecipeTime/editRecipeTime';
 import EditIngredientsList from '../../components/editIngredientsList/editIngredientsList';
 import EditInstructionsList from '../../components/editInstructionsList/editInstructionsList';
-import { getDatabase, ref, update } from 'firebase/database';
 import UploadRecipeImage from '../../components/uploadRecipeImage/uploadRecipeImage';
 
 const EditRecipe = () => {
   const {state} = useLocation();
   const navigate = useNavigate();
+  const auth = useAuth();
+  
+  useEffect(() => {
+    if(!auth.user) navigate('/all-recipes');
+  }, [auth.user, navigate])
+  
+  const isPublicBeforeEdit = state.isPublic;
 
   const [recipe, setRecipe] = useState({
+    userRecipeId: state.userRecipeId,
+    userId: state.userId,
+    allRecipesId: state.allRecipesId,
+    isPublic: state.isPublic,
     title: state.title,
     img: state.img,
     description: state.description,
@@ -19,16 +43,26 @@ const EditRecipe = () => {
     ingredients: state.ingredients,
     instructions: state.instructions,
     notes: state.notes,
-    id: state.id,
   })
-  console.log(recipe.time);
 
-  const postToDatabase = () => {
+  const updateRecipe = () => {
     const databaseRef = ref(getDatabase());
     const updates = {};
-    const recipeUrl = '/recipes/' + recipe.id;
-    updates[recipeUrl] = recipe;
-    return update(databaseRef, updates);
+    const userRecipePath = database.usersKey + recipe.userId + database.userRecipesKey + recipe.userRecipeId;
+    updates[userRecipePath] = recipe;
+
+    if(isPublicBeforeEdit && !recipe.isPublic) {
+      const publicRecipeKey = database.allRecipesKey + recipe.allRecipesId;
+      updates[publicRecipeKey] = null;
+    } else if (!isPublicBeforeEdit && recipe.isPublic) {
+      const newPublicRecipeKey = push(child(databaseRef, '/all-recipes')).key;
+      recipe.allRecipesId = newPublicRecipeKey;
+      const publicRecipePath = database.allRecipesKey + newPublicRecipeKey;
+      updates[publicRecipePath] = recipe;
+    }
+
+    update(databaseRef, updates);
+    return navigate(`/users/${state.userId}/recipes`);
   }
 
   return (
@@ -38,21 +72,16 @@ const EditRecipe = () => {
           placeholder='Recipe title'
           aria-label="Recipe title"
           type='text'
+          id='title-input'
           value={recipe.title}
           onChange={(e) => setRecipe({...recipe, title: e.target.value})}
         />
-        <Link
-          to={`/recipe/${recipe.id}`}
-          state={recipe}
+        <button 
+          className='save'
+          onClick={updateRecipe}
         >
-          <button 
-            type="submit"
-            className='save'
-            onClick={postToDatabase}
-          >
-            Save
-          </button>
-        </Link>
+          Save
+        </button>
         <button 
           type="button"
           className='cancel'
@@ -80,6 +109,13 @@ const EditRecipe = () => {
           value={recipe.description}
           onChange={(e) => setRecipe({...recipe, description: e.target.value})}
         />
+        <div className='toggle-div'>
+          <span>{recipe.isPublic ? 'Public' : 'Private'}</span>
+          <div className={recipe.isPublic ? 'public' : 'private'} id='toggle-switch'>
+            <input type='checkbox' onClick={()=> setRecipe({...recipe, isPublic: !recipe.isPublic})}/>
+            <div className={recipe.isPublic ? 'public' : 'private'} id='slider'></div>
+          </div>
+        </div>
       </div>
       
       <div className="edit-recipe-container" id='time-container'>

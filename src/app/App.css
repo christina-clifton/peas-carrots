@@ -89,6 +89,9 @@
   grid-area: main;
   padding: 2rem;
   background-color: #f7ede283;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #app-navbar-primary {

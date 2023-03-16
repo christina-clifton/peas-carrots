@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 
 import {getDatabase, ref, get, child} from 'firebase/database';
-import {database} from '../../util/constants';
+import {database} from '../../util/Constants';
 
-import './searchResults.css';
+import './SearchResults.css';
 import RecipeTile from '../../components/recipeTile/RecipeTile';
 
 const SearchResults = () => {

@@ -1,8 +1,12 @@
 {
   "rules": {
-    "recipes": {
+    "users": {
       ".read": true,
     ".write": true
+    },
+    "all-recipes": {
+      ".read": true ,
+        ".write": true
     }
   }
 }

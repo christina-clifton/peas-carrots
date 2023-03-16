@@ -1,5 +1,8 @@
+//stylesheet
 import './RecipeTime.css';
-import {getTimeString} from '../../util/utilityFunctions';
+
+//utility functions
+import {getTimeString} from '../../util/UtilityFunctions';
 
 const RecipeTime = (props) => {
     const prepTime = getTimeString(props.prepTime);

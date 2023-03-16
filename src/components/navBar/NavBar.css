@@ -5,11 +5,12 @@
     width: 100%;
     justify-content: space-around;
     align-items: center;
-    font-weight: 600;
 }
 
 .navbar .link {
     width: 10rem;
     text-align: center;
+    color: inherit;
+    cursor: pointer;
 }
 
