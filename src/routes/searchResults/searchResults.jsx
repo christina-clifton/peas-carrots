@@ -1,10 +1,17 @@
+//stylesheet
+import './SearchResults.css';
+
+//dependencies
 import React, {useState, useEffect} from 'react'; 
 import {useLocation} from 'react-router-dom';
 
+//database
 import {getDatabase, ref, get, child} from 'firebase/database';
+
+//constants
 import {database} from '../../util/Constants';
 
-import './SearchResults.css';
+//components
 import RecipeTile from '../../components/recipeTile/RecipeTile';
 
 const SearchResults = () => {
@@ -18,7 +25,7 @@ const SearchResults = () => {
         let searchResultsList = [];
     
         const databaseRef = ref(getDatabase());
-        get(child(databaseRef, database.recipes)).then((snapshot) => {
+        get(child(databaseRef, database.allRecipesKey)).then((snapshot) => {
             if(snapshot.exists()) {
                 const data = snapshot.val();
                 if(data != null) {
@@ -29,13 +36,17 @@ const SearchResults = () => {
                         if(it.title.toLowerCase().includes(query)) {
 
                             let recipe = {
-                                id: it.id,
+                                userRecipeId: it.userRecipeId,
+                                userId: it.userId,
+                                allRecipesId: it.allRecipesId,
+                                isPublic: it.isPublic,
                                 title: it.title,
                                 img: it.img,
                                 description: it.description,
                                 time: it.time,
                                 ingredients: it.ingredients,
-                                instructions: it.instructions
+                                instructions: it.instructions,
+                                notes: it.notes
                             }
 
                             searchResultsList.push(recipe);
@@ -58,14 +69,18 @@ const SearchResults = () => {
             <ul>
                 {searchResults.map(recipe => 
                     <li key={recipe.id}>
-                        <RecipeTile 
-                            img={recipe.img}
+                        <RecipeTile
+                            userRecipeId={recipe.userRecipeId}
+                            userId={recipe.userId}
+                            allRecipesId={recipe.allRecipesId}
+                            isPublic={recipe.isPublic} 
                             title={recipe.title}
+                            img={recipe.img}
                             description={recipe.description}
-                            id={recipe.id}
                             time={recipe.time}
                             ingredients={recipe.ingredients}
                             instructions={recipe.instructions}
+                            notes={recipe.notes}
                         />
                     </li>
                 )}

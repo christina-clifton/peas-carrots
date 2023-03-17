@@ -1,4 +1,7 @@
+//stylesheet
 import './RecipeTile.css';
+
+//dependencies
 import {Link} from 'react-router-dom';
 
 const RecipeTile = (props) => {
