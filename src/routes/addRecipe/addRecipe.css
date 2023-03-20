@@ -58,44 +58,6 @@
     background-color: #f28482;
 }
 
-.add-recipe #recipe-img {
-    height: 18rem;
-    width: 18rem;
-    margin: auto;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.add-recipe #recipe-img img {
-    max-height: 100%;
-    max-width: 100%;
-    margin: auto;
-    position: absolute;
-    opacity: 0.5;
-    z-index: 0;
-}
-
-.add-recipe #img-upload-label {
-    height: min-content;
-    width: min-content;
-    margin: auto;
-    padding: 0.5rem;
-    position: relative;
-    background-color: #758eae;
-    color: white;
-    font-size: 0.9rem;
-    border-radius: 0.5rem;
-    z-index: 1;
-    cursor: pointer;
-}
-
-.add-recipe input[type="file"] {
-    display: none;
-}
-
 .add-recipe #description-container {
     display: flex;
     flex-direction: row;

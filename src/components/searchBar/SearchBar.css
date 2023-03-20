@@ -1,25 +1,25 @@
 .search {
-    display: flex;
     height: 60%;
     width: 50%;
+    display: flex;
     background-color: white;
     border-radius: 1rem;
 }
 
 .searchbar {
+    width: 95%;
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 95%;
-    margin: auto;
 }
 
 .searchbar input {
-    border: none;
     width: 95%;
-    font-size: 1.25rem;
-    padding: 0.5rem;
     margin-left: 0.5rem;
+    padding: 0.5rem;
+    border: none;
+    font-size: 1.25rem;
 }
 
 .searchbar input::placeholder {
@@ -35,8 +35,8 @@
 
 .searchbar .search-icon {
     width: 2rem;
-    padding: 0.25rem;
     margin-right: 0.5rem;
+    padding: 0.25rem;
 }
 
 .searchbar .search-icon:hover {

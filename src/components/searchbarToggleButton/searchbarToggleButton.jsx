@@ -1,5 +1,10 @@
-import React from 'react';
+//stylesheet
 import './searchbarToggleButton.css';
+
+//dependencies
+import React from 'react';
+
+//assets
 import searchIcon from '../../assets/magnifying_glass_icon.png';
 import deleteIcon from '../../assets/delete-black.png';
 

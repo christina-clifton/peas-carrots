@@ -1,12 +1,14 @@
 .search-results {
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .search-results h2 {
-    text-align: center;
     margin-top: 2rem;
+    text-align: center;
     font-size: 1.7rem;
     font-weight: 700;
     font-family: 'Raleway', sans-serif;
@@ -14,28 +16,28 @@
 }
 
 .search-results span {
-    color: #84a59d;
-    font-size: 1.5rem;
     margin-bottom: 2rem;
+    font-size: 1.5rem;
+    color: #84a59d;
 }
 
 .search-results button#add-recipe {
     margin: 1rem 0;
+    padding: 0.5rem;
     background-color: #84a59d;
     color: white;
     border-radius: 0.5rem;
     border: transparent;
-    padding: 0.5rem;
     cursor: pointer;
 }
 
 .search-results ul {
-    list-style: none;
+    margin: 1rem;
+    padding: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin: 1rem;
-    padding: 0;
+    list-style: none;
 }
 .search-results li {
     margin:0 1rem 3rem 1rem;

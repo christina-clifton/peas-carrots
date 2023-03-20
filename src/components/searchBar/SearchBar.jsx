@@ -1,8 +1,16 @@
-import { Link, useNavigate } from 'react-router-dom';
-import React, {useState, useRef} from 'react';
+//stylesheet
 import './SearchBar.css';
-import magnifyingGlass from '../../assets/magnifying_glass_icon.png';
+
+//dependencies
+import React, {useState, useRef} from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
+//utility functions
 import { useClickOutsideElement } from '../../util/UtilityFunctions';
+
+//assets
+import magnifyingGlass from '../../assets/magnifying_glass_icon.png';
+
 
 const SearchBar = (props) => {
     const navigate = useNavigate();
@@ -15,7 +23,7 @@ const SearchBar = (props) => {
         const searchTerm = value;
 
         if(e.keyCode === 13) {
-            navigate("/searchResults", {state: searchTerm});
+            navigate("/search-results", {state: searchTerm});
             setValue('');
         }
     }
@@ -33,7 +41,7 @@ const SearchBar = (props) => {
                     onKeyDown={handleInput}
                 />
                 <Link
-                    to='/searchResults'
+                    to='/search-results'
                     state={value}
                 >
                     <button type="submit">

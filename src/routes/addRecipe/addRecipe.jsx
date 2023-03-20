@@ -6,7 +6,9 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 //database
-import { getDatabase, ref, update, child, push } from 'firebase/database';
+import { getStorage, ref as sRef, uploadBytes, getDownloadURL } from 'firebase/storage';
+
+import { getDatabase, ref as dbRef, update, child, push } from 'firebase/database';
 
 //context
 import { useAuth } from '../../util/auth';
@@ -25,10 +27,6 @@ const AddRecipe = () => {
   const auth = useAuth();
   const userId = auth.user;
 
-  useEffect(() => {
-    if(!auth.user) navigate('/all-recipes', );
-  }, [auth.user, navigate])
-
   const [recipe, setRecipe] = useState(
     {
       title: '',
@@ -42,28 +40,42 @@ const AddRecipe = () => {
       userId: userId
     }
   )
+  // const [isImgUploaded, setIsImgUploaded] = useState(false);
+
+  useEffect(() => {
+    if(!auth.user) navigate('/all-recipes', );
+  }, [auth.user, navigate]);
 
   const saveRecipe = () => {
     if(!recipe.title) {
       return alert('Recipe title is required');
-    } 
-    const databaseRef = ref(getDatabase());
-    const updates = {};
-
-    if(recipe.isPublic) {
-      const newPublicRecipeKey = push(child(databaseRef, '/all-recipes')).key;
-      const publicRecipePath = database.allRecipesKey + newPublicRecipeKey;
-      recipe.allRecipesId = newPublicRecipeKey;
-      updates[publicRecipePath] = recipe;
-    } 
-
-    const userRecipesPath = database.usersKey + userId + database.userRecipesKey;
-    const recipeKey = push(child(databaseRef, userRecipesPath)).key;
-    const recipePath = userRecipesPath + recipeKey;
-    recipe.userRecipeId = recipeKey;
-    updates[recipePath] = recipe;
-    update(databaseRef, updates);
-    return navigate(`/users/${recipe.userId}/recipes/${recipe.userRecipeId}`, {state: {recipe}})
+    }
+   
+    const storage = getStorage();
+    const storageRef = sRef(storage, 'images/' + recipe.title);
+    uploadBytes(storageRef, recipe.img).then((snapshot) => {
+      getDownloadURL(sRef(storage, snapshot.ref.fullPath)).then((url) => {
+        recipe.img = url;
+      }).then(() => {
+        const databaseRef = dbRef(getDatabase());
+        const updates = {};
+    
+        if(recipe.isPublic) {
+          const newPublicRecipeKey = push(child(databaseRef, '/all-recipes')).key;
+          const publicRecipePath = database.allRecipesKey + newPublicRecipeKey;
+          recipe.allRecipesId = newPublicRecipeKey;
+          updates[publicRecipePath] = recipe;
+        } 
+    
+        const userRecipesPath = database.usersKey + userId + database.userRecipesKey;
+        const recipeKey = push(child(databaseRef, userRecipesPath)).key;
+        const recipePath = userRecipesPath + recipeKey;
+        recipe.userRecipeId = recipeKey;
+        updates[recipePath] = recipe;
+        update(databaseRef, updates);
+        return navigate(`/users/${recipe.userId}/recipes/${recipe.userRecipeId}`, {state: {recipe}})
+      })
+    })
   }
 
   return (
@@ -98,7 +110,7 @@ const AddRecipe = () => {
       <div className="add-recipe-container" id='recipe-img'>
         <UploadRecipeImage 
           img={recipe.img}
-          setImg={(url) => setRecipe({...recipe, img: url})}
+          setImg={(imgFile) => setRecipe({...recipe, img: imgFile})}
           title={recipe.title}
         />
       </div>

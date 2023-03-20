@@ -1,0 +1,37 @@
+.img-upload {
+    height: 18rem;
+    width: 18rem;
+    margin: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-upload img {
+    max-height: 100%;
+    max-width: 100%;
+    margin: 0;
+    position: absolute;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.img-upload label { 
+    height: min-content;
+    width: max-content;
+    margin: auto;
+    padding: 0.5rem;
+    position: relative;
+    background-color: #758eae;
+    color: white;
+    font-size: 0.9rem;
+    border-radius: 0.5rem;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.img-upload input[type="file"] {
+    display: none;
+}

@@ -1,5 +1,8 @@
+//stylesheet
+import './NavToggleButton.css';
+
+//dependencies
 import React from 'react';
-import './NavToggleButton.css'
 
 const NavToggleButton = (props) => {
     const {isToggled, toggle} = props;

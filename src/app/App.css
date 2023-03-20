@@ -1,7 +1,6 @@
 .app {
   height: 100%;
   display: grid;
-  font-family: 'Raleway', sans-serif;
   grid-template-areas: 'header'
                         'main'
                         'footer';
@@ -10,7 +9,7 @@
   overflow-x: hidden;
   scrollbar-color: white;
   scrollbar-width: thin;
-
+  font-family: 'Raleway', sans-serif;
 }
 
 .app.nav-open,
@@ -32,8 +31,8 @@
 
 .app-header {
   grid-area: header;
-  display: grid;
   width: 100%;
+  display: grid;
   grid-template-areas: 'nav-toggle title search-toggle';
   grid-template-columns: 10% 1fr 10%;
   border-bottom: 2px solid black;
@@ -65,16 +64,16 @@
 
 #app-title {
   grid-area: title;
-  font-family: 'Homemade Apple', cursive;
   padding-top: 0.5rem;
   line-height: 3.5rem;
+  font-family: 'Homemade Apple', cursive;
 }
 
 #app-title h1 {
-  font-size: 2.5rem;
   margin: auto 0;
   width: min-content;
   text-align: center;
+  font-size: 2.5rem;
 }
 
 #app-title span {
@@ -88,10 +87,10 @@
 .app-main {
   grid-area: main;
   padding: 2rem;
-  background-color: #f7ede283;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #f7ede283;
 }
 
 #app-navbar-primary {

@@ -1,11 +1,15 @@
-import { 
-    Outlet,
-} from "react-router-dom";
+//stylesheet
 import './App.css';
+
+//dependencies
+import { Outlet } from "react-router-dom";
 import React, { useState } from 'react';
+
+//database
 import { initializeApp } from 'firebase/app';
 import firebaseConfig from '../util/Firebase';
 
+//components
 import NavBar from '../components/navBar/NavBar';
 import SearchBar from '../components/searchBar/SearchBar';
 import NavToggleButton from '../components/navToggleButton/NavToggleButton';
