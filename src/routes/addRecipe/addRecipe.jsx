@@ -40,7 +40,6 @@ const AddRecipe = () => {
       userId: userId
     }
   )
-  // const [isImgUploaded, setIsImgUploaded] = useState(false);
 
   useEffect(() => {
     if(!auth.user) navigate('/all-recipes', );
