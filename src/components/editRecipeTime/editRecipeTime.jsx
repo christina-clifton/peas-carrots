@@ -48,10 +48,11 @@ const EditRecipeTime = (props) => {
   return(
     <div className='edit-recipe-time'>
       <div className="recipe-times" id="prep-time">
-        <h4>Prep Time</h4>
+        <h2>Prep Time</h2>
         <div className='hours-and-minutes'>
           <div className='hours'>
             <input
+              className='edit-recipe-time-input'
               placeholder='0'
               id='prep-hours'
               aria-label='recipe prep hours'
@@ -63,6 +64,7 @@ const EditRecipeTime = (props) => {
           </div>
           <div className='minutes'>
             <input
+              className='edit-recipe-time-input'
               placeholder='0'
               id='prep-minutes'
               aria-label='recipe prep minutes'
@@ -76,10 +78,11 @@ const EditRecipeTime = (props) => {
       </div> 
 
       <div className="recipe-times" id="cook-time">
-        <h4>Cook Time</h4>
+        <h2>Cook Time</h2>
         <div className='hours-and-minutes'>
           <div className='hours'>
             <input
+              className='edit-recipe-time-input'
               placeholder='0'
               id='cook-hours'
               aria-label='recipe prep hours'
@@ -91,6 +94,7 @@ const EditRecipeTime = (props) => {
           </div>
           <div className='minutes'>
             <input
+              className='edit-recipe-time-input'
               placeholder='0'
               id='cook-minutes'
               aria-label='recipe prep minutes'
@@ -104,7 +108,7 @@ const EditRecipeTime = (props) => {
       </div>
 
       <div className="recipe-times" id="total-time">
-        <h4>Total Time</h4>
+        <h2>Total Time</h2>
         <span>{totalTime}</span>
       </div>
     </div>

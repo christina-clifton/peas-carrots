@@ -61,7 +61,8 @@ const UserRecipeDetails = () => {
             </Link>
             <button 
               className='delete-button-wrapper' 
-              type='button' 
+              type='button'
+              aria-haspopup='dialog' 
               onClick={() => window.confirm('Delete this recipe?') ? handleDeleteRecipe() : null}
             >
               <img 
@@ -74,7 +75,7 @@ const UserRecipeDetails = () => {
         </div>
 
         <div className='recipe-details-containter' id="recipe-img">
-          <img src={recipe.img} alt={recipe.name}/>
+          <img src={recipe.img} alt='' />
         </div>
 
         <div className='recipe-details-container' id='recipe-description'>

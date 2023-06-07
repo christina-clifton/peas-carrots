@@ -12,18 +12,18 @@ const SearchbarToggleButton = (props) => {
     const {isToggled, toggle} = props;
 
     return (
-        <div className="searchbar-toggle-button">
+        <div className="searchbar-toggle-button" aria-expanded={isToggled}>
             {isToggled ? 
                 <img 
                     src={deleteIcon} 
-                    alt='close-searchbar'
+                    alt=''
                     id='close-icon'
                     onClick={toggle}
                 />
             :
                 <img 
                     src={searchIcon} 
-                    alt='open-searchbar' 
+                    alt='' 
                     id='search-icon'
                     onClick={toggle} 
                 />

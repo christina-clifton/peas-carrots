@@ -24,7 +24,7 @@
     margin: auto;
     padding: 0.5rem;
     position: relative;
-    background-color: #758eae;
+    background-color: #5b769a;
     color: white;
     font-size: 0.9rem;
     border-radius: 0.5rem;
@@ -34,4 +34,26 @@
 
 .img-upload input[type="file"] {
     display: none;
+}
+
+@media only screen and (max-width: 780px) {
+    .img-upload {
+        height: 16rem;
+        width: 16rem;
+    }
+
+    .img-upload label { 
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .img-upload {
+        height: 14rem;
+        width: 14rem;
+    }
+
+    .img-upload label { 
+        font-size: 0.6rem;
+    }
 }

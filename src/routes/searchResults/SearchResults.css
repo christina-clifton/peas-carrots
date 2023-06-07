@@ -39,6 +39,21 @@
     justify-content: space-around;
     list-style: none;
 }
+
 .search-results li {
     margin:0 1rem 3rem 1rem;
+}
+
+@media only screen and (max-width: 780px) {
+    .search-results h2 {
+        margin: 1.5rem 0;
+        font-size: 1.4rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .search-results h2 {
+        margin: 1rem 0;
+        font-size: 1.2rem;
+    }
 }

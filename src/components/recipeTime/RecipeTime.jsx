@@ -13,20 +13,20 @@ const RecipeTime = (props) => {
         <div className='recipe-time'>
             {props.prepTime > 0 && 
                 <div className="recipe-times" id="prep-time">
-                <h4>Prep Time</h4>
-                <span>{prepTime}</span>
+                    <h3>Prep Time</h3>
+                    <span>{prepTime}</span>
                 </div>
             }
             {props.cookTime > 0 && 
                 <div className="recipe-times" id="cook-time">
-                    <h4>Cook Time</h4>
+                    <h3>Cook Time</h3>
                     <span>{cookTime}</span>
                 </div>
             }
             
             <div className="recipe-times" id="total-time">
-              <h4>Total Time</h4>
-              <span>{totalTime}</span>
+                <h3>Total Time</h3>
+                <span>{totalTime}</span>
             </div>
         </div>
     )

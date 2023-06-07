@@ -33,12 +33,6 @@ body,
   color: #121212;
 }
 
-:focus {
-  outline: 0;
-}
-
 .link {
 	text-decoration: none;
-	color: #758eae;
-	font-weight: 500;
 }

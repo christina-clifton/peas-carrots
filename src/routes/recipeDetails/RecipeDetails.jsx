@@ -17,8 +17,8 @@ const RecipeDetails = () => {
           <h2>{recipe.title}</h2>
         </div>
 
-        <div className='recipe-details-containter' id="recipe-img">
-          <img src={recipe.img} alt={recipe.name}/>
+        <div className='recipe-details-container' id="recipe-img">
+          <img src={recipe.img} alt=''/>
         </div>
 
         <div className='recipe-details-container' id='recipe-description'>

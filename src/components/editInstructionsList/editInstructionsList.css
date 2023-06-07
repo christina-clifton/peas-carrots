@@ -5,7 +5,7 @@
 }
 
 .edit-instructions-list input {
-    width: 40%;
+    width: 80%;
     margin-right: 1rem;
     padding: 0.5rem;
     border: 1px solid #77777771;
@@ -16,7 +16,7 @@
     height: 1.5rem;
     width: 1.5rem;
     padding: 0;
-    background-color: #758eaeb7;
+    background-color: #5b769a;
     color: white;
     border-radius: 1rem;
     border: none;
@@ -45,4 +45,21 @@
 .edit-instructions-list .delete-icon {
     height: 1rem;
     width: 1rem;
+}
+
+@media only screen and (max-width: 780px) {
+    .edit-instructions-list #ingredient {
+        font-size: 0.9rem;
+    }
+
+    .edit-instructions-list .delete-button-wrapper {
+        height: 1.3rem;
+        width: 1.3rem;
+        padding-left: 1.7rem;
+    }
+
+    .edit-instructions-list .delete-icon {
+        height: 0.8rem;
+        width: 0.8rem;
+    }
 }

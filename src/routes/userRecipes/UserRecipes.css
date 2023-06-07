@@ -18,7 +18,7 @@
 .user-recipes #add-recipe {
     margin: 1rem 0;
     padding: 0.5rem;
-    background-color: #84a59d;
+    background-color: #57756d;
     color: white;
     border-radius: 0.5rem;
     border: transparent;
@@ -35,4 +35,24 @@
 }
 .user-recipes li {
     margin:0 1rem 3rem 1rem;
+}
+
+@media only screen and (max-width: 780px) {
+    .user-recipes h2 {
+        margin: 1.5rem 0;
+        font-size: 1.4rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .user-recipes h2 {
+        margin: 1rem 0;
+        font-size: 1.2rem;
+    }
+
+    .user-recipes #add-recipe {
+        margin: 0.5rem 0;
+        padding: 0.4rem;
+        font-size: 0.7rem;
+    }
 }

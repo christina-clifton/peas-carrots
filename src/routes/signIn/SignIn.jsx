@@ -41,8 +41,9 @@ const SignIn = () => {
             <input 
                 placeholder='Email'
                 aria-label="Email"
+                aria-required='true'
                 type='text'
-                id='email'
+                id='email-input'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
@@ -50,6 +51,7 @@ const SignIn = () => {
                 <input 
                     placeholder='Password'
                     aria-label="Password"
+                    aria-required='true'
                     type={passwordIsHidden ? 'password' : 'text'}
                     id='password-input'
                     value={password}
@@ -64,10 +66,12 @@ const SignIn = () => {
             </div>
             
             <button onClick={handleLogin} className='submit'>Submit</button>
-            <span>Don't have an account?&nbsp;
+            <span className='create-account-text'>Don't have an account?
+                <br/>
                 <Link 
                     to='/create-account'
                     className='link'
+                    id='create-account-link'
                 >
                     Create one.
                 </Link></span>

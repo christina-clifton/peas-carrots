@@ -57,6 +57,7 @@ const CreateAccount = () => {
             <input 
                 placeholder='Email'
                 aria-label="Email"
+                aria-required='true'
                 type='text'
                 id='email'
                 value={email}
@@ -66,6 +67,7 @@ const CreateAccount = () => {
                 <input 
                     placeholder='Password'
                     aria-label="Password"
+                    aria-required='true'
                     type={passwordIsHidden ? 'password' : 'text'}
                     className='password-input'
                     value={password}
@@ -82,6 +84,7 @@ const CreateAccount = () => {
                 <input 
                     placeholder='Confirm Password'
                     aria-label="Confirm Password"
+                    aria-required='true'
                     type={confirmPasswordIsHidden ? 'password' : 'text'}
                     className='password-input'
                     value={confirmPassword}

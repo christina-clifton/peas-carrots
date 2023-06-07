@@ -1,5 +1,5 @@
 .edit-recipe-time {
-    height: 6rem;
+    height: 6.5rem;
     padding: 0;
     display: flex;
     flex-direction: row;
@@ -8,11 +8,13 @@
     border-bottom: 1px solid black;
 }
 
-.edit-recipe-time input {
+.edit-recipe-time-input {
+    height: 2rem;
     width: 3rem;
     font-size: 0.9rem;
     text-align: center;
-    border:1px solid #77777771;
+    border: 1px solid #77777771;
+    border-radius: 0.5rem;
 }
 
 .edit-recipe-time .recipe-times {
@@ -29,8 +31,10 @@
     border-right: 0.25px solid black;
 }
 
-.edit-recipe-time h4 {
+.edit-recipe-time h2 {
     margin: 1rem 0 0 0;
+    font-weight: 700;
+    font-size: 1.2rem;
 }
 
 .edit-recipe-time .hours-and-minutes {
@@ -52,4 +56,69 @@
     margin: auto;
     padding-left: 0.3rem;
     font-style: oblique;
+}
+
+.edit-recipe-time #total-time-spans {
+    margin: auto;
+    width: max-content;
+}
+
+@media only screen and (max-width: 780px) {
+    .edit-recipe-time {
+        height: 8.5rem;
+    }
+
+    .edit-recipe-time h2 {
+        font-size: 1.1rem;
+    }
+
+    .edit-recipe-time-input {
+        height: 1.8rem;
+        width: 2.5rem;
+        font-size: 0.8rem;
+    }
+
+    .edit-recipe-time .hours-and-minutes {
+        flex-direction: column;
+    }
+
+    .edit-recipe-time .hours,
+    .edit-recipe-time .minutes {
+        padding: 0.2rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .edit-recipe-time {
+        flex-direction: column;
+        height: 23rem;
+        padding: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.4);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+        margin: 1rem auto;
+    }
+
+    .edit-recipe-time .recipe-times {
+        padding: 1rem;
+    }
+
+    .edit-recipe-time h2 {
+        font-size: 1rem;
+    }
+
+    .edit-recipe-time-input {
+        font-size: 0.8rem;
+    }
+
+    .edit-recipe-time .hours-and-minutes {
+        flex-direction: row;
+        font-size: 0.9rem;
+    }
+
+    .edit-recipe-time #prep-time,
+    .edit-recipe-time #cook-time {
+        border-bottom: 0.25px solid rgba(0, 0, 0, 0.2);
+        border-right: none;
+    }
+
 }

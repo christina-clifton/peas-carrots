@@ -43,7 +43,7 @@ const App = () => {
     
     return (
         <div className={getAppClassName()}>
-            <div className='app-header'>
+            <header className='app-header'>
                 <div className='header-item-container' id='app-navbar-toggle'>
                     <NavToggleButton 
                         isToggled={navbarToggled}
@@ -60,26 +60,23 @@ const App = () => {
                     />
                 </div>
                 {searchbarToggled && 
-                    <div className='header-item-container' id='app-searchbar-primary'>
+                    <div aria-hidden={!searchbarToggled} className='header-item-container' id='app-searchbar-primary'>
                         <SearchBar 
                             toggle={searchbarToggle}
                         />
                     </div>
                 }
                 {navbarToggled && 
-                    <div  className='header-item-container' id='app-navbar-primary'>
+                    <div  aria-hidden={!navbarToggled} className='header-item-container' id='app-navbar-primary'>
                         <NavBar 
                             toggle={navbarToggle}
                         />
                     </div>
                 }
-            </div>
-            <div className='app-main'>
+            </header>
+            <main>
                 <Outlet />    
-            </div>
-            <div className='app-footer'>
-                <p>peas and carrots &copy;</p>
-            </div> 
+            </main>
         </div>
     )
 }

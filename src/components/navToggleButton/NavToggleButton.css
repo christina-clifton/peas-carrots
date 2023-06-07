@@ -1,8 +1,9 @@
 #navbar-toggle-icon {
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 2rem;
+    width: 2rem;
     position: relative;
     border: none;
+    padding: 0;
     background-color: transparent;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -18,10 +19,9 @@
 #navbar-toggle-icon span {
     display: block;
     position: absolute;
-    height: 0.15rem;
-    width: 100%;
+    height: 0.1rem;
     background: black;
-    opacity: 1;
+    width: 100%;
     left: 0;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -34,7 +34,7 @@
 }
   
 #navbar-toggle-icon span:nth-child(1) {
-    top: 0.4rem;
+    top: 0;
     -webkit-transform-origin: left center;
     -moz-transform-origin: left center;
     -o-transform-origin: left center;
@@ -42,7 +42,7 @@
 }
   
 #navbar-toggle-icon span:nth-child(2) {
-    top: 1.2rem;
+    top: 0.87rem;
     -webkit-transform-origin: left center;
     -moz-transform-origin: left center;
     -o-transform-origin: left center;
@@ -50,11 +50,15 @@
 }
   
 #navbar-toggle-icon span:nth-child(3) {
-    top: 2rem;
+    top: 1.75rem;
     -webkit-transform-origin: left center;
     -moz-transform-origin: left center;
     -o-transform-origin: left center;
     transform-origin: left center;
+}
+
+#navbar-toggle-icon.open span {
+    width: 130%;
 }
   
 #navbar-toggle-icon.open span:nth-child(1) {
@@ -62,13 +66,10 @@
     -moz-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
-    top: 0.25rem;
-    left: 0.35rem;
 }
   
 #navbar-toggle-icon.open span:nth-child(2) {
-    width: 0%;
-    opacity: 0;
+    display: none;
 }
   
 #navbar-toggle-icon.open span:nth-child(3) {
@@ -76,6 +77,48 @@
     -moz-transform: rotate(-45deg);
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
-    top: 2rem;
-    left: 0.35rem;
+    top: 1.85rem;
+}
+
+@media only screen and (max-width: 780px) {
+    #navbar-toggle-icon {
+        height:1.7rem;
+        width: 1.7rem;
+    }
+
+    #navbar-toggle-icon span:nth-child(2) {
+        top: 0.75rem;
+    }
+
+    #navbar-toggle-icon span:nth-child(3) {
+        top: 1.45rem;
+    }
+
+    #navbar-toggle-icon.open span:nth-child(3) {
+        top: 1.6rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #navbar-toggle-icon {
+        height:1.3rem;
+        width: 1.3rem;
+    }
+
+    #navbar-toggle-icon span {
+        height: 0.05rem;
+
+    }
+
+    #navbar-toggle-icon span:nth-child(2) {
+        top: 0.54rem;
+    }
+
+    #navbar-toggle-icon span:nth-child(3) {
+        top: 1.09rem;
+    }
+
+    #navbar-toggle-icon.open span:nth-child(3) {
+        top: 1.25rem;
+    }
 }

@@ -2,19 +2,16 @@
   height: 100%;
   display: grid;
   grid-template-areas: 'header'
-                        'main'
-                        'footer';
-  grid-template-rows: 14% 1fr 5%;
-  overflow-y: auto;
+                        'main';
+  grid-template-rows: 13% 1fr;
+  overflow-y: hidden;
   overflow-x: hidden;
-  scrollbar-color: white;
-  scrollbar-width: thin;
   font-family: 'Raleway', sans-serif;
 }
 
 .app.nav-open,
 .app.search-open {
-  grid-template-rows: 25% 1fr 5%;
+  grid-template-rows: 20% 1fr;
 }
 
 .app::-webkit-scrollbar {
@@ -29,27 +26,27 @@
   background: rgba(255, 192, 203, 0.274);
 }
 
-.app-header {
+header {
   grid-area: header;
   width: 100%;
   display: grid;
   grid-template-areas: 'nav-toggle title search-toggle';
   grid-template-columns: 10% 1fr 10%;
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-.nav-open .app-header {
+.nav-open header {
   grid-template-areas: 'nav-toggle title search-toggle'
                         'nav-primary nav-primary nav-primary';
   grid-template-columns: 10% 1fr 10%;
-  grid-template-rows: 1fr 45%;
+  grid-template-rows: 1fr 35%;
 }
 
-.search-open .app-header {
+.search-open header {
   grid-template-areas: 'nav-toggle title search-toggle'
                         'search-primary search-primary search-primary';
   grid-template-columns: 10% 1fr 10%;
-  grid-template-rows: 1fr 45%;
+  grid-template-rows: 1fr 35%;
 }
 
 .header-item-container {
@@ -60,12 +57,13 @@
 
 #app-navbar-toggle {
   grid-area: nav-toggle;
+  justify-content: end;
 }
 
 #app-title {
   grid-area: title;
   padding-top: 0.5rem;
-  line-height: 3.5rem;
+  line-height: 3rem;
   font-family: 'Homemade Apple', cursive;
 }
 
@@ -73,41 +71,72 @@
   margin: auto 0;
   width: min-content;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 #app-title span {
-  color: #758eae;
+  color: #5b769a;
 }
 
 #app-searchbar-toggle {
   grid-area: search-toggle;
 }
 
-.app-main {
+main {
   grid-area: main;
   padding: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #f7ede283;
+  overflow-y: auto;
+  scrollbar-color: white;
+  scrollbar-width: thin;
 }
 
 #app-navbar-primary {
   grid-area: nav-primary;
   background-color: #f5cac3a6;
-  border-top: 1px solid black;
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 #app-searchbar-primary {
   grid-area: search-primary;
   background-color: #f5cac3a6;
-  border-top: 1px solid black;
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-.app-footer {
+footer {
   background-color: #f5cac3a6;
-  border-top: 2px solid black;
   text-align: center;
   font-weight: bold;
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+@media only screen and (max-width: 780px) {
+  .app {
+    grid-template-rows: 13% 1fr;
+  }
+  
+  #app-title h1 {
+    font-size: 1.7rem;
+    line-height: 2.5rem;
+
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .app {
+    grid-template-rows: 10% 1fr;
+  }
+
+  .app.nav-open,
+  .app.search-open {
+    grid-template-rows: 15% 1fr;
+  }
+
+  #app-title h1 {
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+  }
 }

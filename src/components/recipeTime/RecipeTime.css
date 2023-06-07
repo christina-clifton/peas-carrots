@@ -22,12 +22,24 @@
     border-right: 0.25px solid black;
 }
 
-.recipe-time h4 {
+.recipe-time h3 {
     margin: 1rem 0 1rem 0;
+    font-weight: 700;
+    font-size: 1.2rem;
     color: #758eae;
 }
 
 .recipe-time span {
     font-style: oblique;
     margin: 0 0 1rem 0;
+}
+
+@media only screen and (max-width: 480px) {
+    .recipe-time {
+        height: 5rem;
+    }
+
+    .recipe-time h3 {
+        font-size: 1rem;
+    }
 }

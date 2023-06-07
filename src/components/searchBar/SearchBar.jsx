@@ -30,29 +30,27 @@ const SearchBar = (props) => {
 
     return (
         <div ref={wrapperRef} className='search'>
-            <div className='searchbar'>
-                <input
-                    aria-label="search recipes"
-                    placeholder="search your recipes"
-                    type="text"
-                    value={value}
-                    name="q"
-                    onChange={(e) => setValue(e.target.value)}
-                    onKeyDown={handleInput}
-                />
-                <Link
-                    to='/search-results'
-                    state={value}
-                >
-                    <button type="submit">
-                        <img 
-                            className="search-icon" 
-                            alt="submit" 
-                            src={magnifyingGlass}
-                        />
-                    </button>
-                </Link>
-            </div>
+            <input
+                aria-label="search recipes"
+                placeholder="search all recipes"
+                type="text"
+                value={value}
+                title='search all recipes'
+                onChange={(e) => setValue(e.target.value)}
+                onKeyDown={handleInput}
+            />
+            <Link
+                to='/search-results'
+                state={value}
+            >
+                <button type="submit">
+                    <img 
+                        className="search-icon" 
+                        alt="submit" 
+                        src={magnifyingGlass}
+                    />
+                </button>
+            </Link>
       </div>
     )
 }

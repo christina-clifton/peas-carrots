@@ -80,7 +80,8 @@ const AddRecipe = () => {
   return (
     <div className='add-recipe' id='add-recipe-form'>
       <div className="add-recipe-container" id='title-container'>
-        <input 
+        <input
+          className='add-recipe-input' 
           placeholder='Recipe title'
           aria-label="Recipe title"
           type='text'
@@ -115,7 +116,8 @@ const AddRecipe = () => {
       </div>
 
       <div className="add-recipe-container" id="description-container">
-        <input 
+        <input
+          className='add-recipe-input'  
           placeholder='Recipe description'
           aria-label='Recipe description'
           type='text'
@@ -126,7 +128,8 @@ const AddRecipe = () => {
         <div className='toggle-div'>
           <span>{recipe.isPublic ? 'Public' : 'Private'}</span>
           <div className={recipe.isPublic ? 'public' : 'private'} id='toggle-switch'>
-            <input type='checkbox' onClick={()=> setRecipe({...recipe, isPublic: !recipe.isPublic})}/>
+            <label for='toggle-input' id='toggle-label'>{recipe.isPublic ? 'make recipe private' : 'make recipe public'}</label>
+            <input type='checkbox' id='toggle-input' onClick={()=> setRecipe({...recipe, isPublic: !recipe.isPublic})}/>
             <div className={recipe.isPublic ? 'public' : 'private'} id='slider'></div>
           </div>
         </div>
@@ -140,7 +143,7 @@ const AddRecipe = () => {
       </div>
 
       <div className="add-recipe-container" id="ingredients-container">
-        <h3 className="add-recipe-header" id="ingredients-header">Ingredients</h3>
+        <h2 className="add-recipe-header" id="ingredients-header">Ingredients</h2>
         <EditIngredientsList
           ingredients={recipe.ingredients}
           setIngredients={(ingredients) => setRecipe({...recipe, ingredients: ingredients})}
@@ -148,7 +151,7 @@ const AddRecipe = () => {
       </div>
 
       <div className="add-recipe-container" id="instructions-container">
-        <h3 className="add-recipe-header" id="instructions-header">Instructions</h3>
+        <h2 className="add-recipe-header" id="instructions-header">Instructions</h2>
         <EditInstructionsList
           instructions={recipe.instructions}
           setInstructions={(instructions) => setRecipe({...recipe, instructions: instructions})}
@@ -156,9 +159,10 @@ const AddRecipe = () => {
       </div>
 
       <div className='add-recipe-container' id='notes'>
-        <h3 className='add-recipe-header' id='notes-header'>Notes</h3>
+        <h2 className='add-recipe-header' id='notes-header'>Notes</h2>
         <textarea
           id='notes'
+          aria-label='recipe notes'
           value={recipe.notes}
           rows={3}
           onChange={(e) => setRecipe({...recipe, notes: e.target.value})}

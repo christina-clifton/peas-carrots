@@ -14,3 +14,14 @@
     cursor: pointer;
 }
 
+@media only screen and (max-width: 780px) {
+    .navbar .link {
+        font-size: 0.9rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .navbar .link {
+        font-size: 0.7rem;
+    }
+}

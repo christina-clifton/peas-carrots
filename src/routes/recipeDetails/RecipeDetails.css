@@ -52,7 +52,9 @@
     height: 20rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     margin: auto;
+    margin: 1rem auto;
 }
 
 .recipe-details #recipe-img img {
@@ -64,6 +66,7 @@
     display: flex;
     align-items: center;
     height: 3rem;
+    margin: 0.5rem 0;
 }
 
 .recipe-details .recipe-header {
@@ -76,5 +79,14 @@
 }
 
 .recipe-details #notes p {
-    margin: 0 0 0 1.3rem;
+    margin: 0 0 3rem 1.3rem;
+}
+
+@media only screen and (max-width: 480px) {
+    .recipe-details {
+        font-size: 0.9rem;
+    }
+
+
+
 }
